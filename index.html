@@ -1,0 +1,178 @@
+ <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mijn navbar</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body onload="greetUser()">
+    <header>
+        <nav>
+            <div class="logo">My <span>Portfolio</span></div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#workexperience">Work Experiece</a></li>
+                    <li><a href="#education">Educational Background</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <section class="content" id="home">
+        
+        <h1 class="test">Welcome to my <span>Portfolio!</span></h1>
+        <p>
+            My name is Butch Kenneth C. Fontelo, Scholar of tesda and currently studying in Asian College
+            Dumaguete.
+        </p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>
+            I started learning about this field around a year ago. At first, I struggled a lot. On the first day of school,
+            I felt completely behind and couldn't keep up with the activities. But I didn’t give up. I studied hard, started with the basics, and slowly began to understand simple syntax. Over time,
+            I learned how to build websites and gained a better understanding of how everything works.
+       
+        </p>
+   
+     <div class="image">
+        <img src="123.jpg" class="photo">
+     </div>
+    </section>
+
+
+ <section id="workexperience">
+    <div class="head">
+    <h1 class="work">Work <span>Experiece</span></h1>
+    <div class="work-text">
+         <p>
+            Remotasks
+        </p>
+        <p>Html and CSS</p>
+        <p>JavaScript</p>
+        <p>C++</p>
+        <p>PhP</p>
+        <p>Database</p>
+    </div>
+    </div> 
+    </section>
+
+    <section id="education">
+        <div class="edu">
+            <h1 class="cent">Educational <span>Background</span></h1>
+            <div class="background">
+                <ul>
+                    <li>Primary: Magsaysay Memorial Elementary School</li>
+                    <li>Secondary: Sibulan National High School</li>
+                    <li>ALS: Sibulan Negros Oriental</li>
+                    <li>Tertiary: Asian College Dumaguete City</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+<section class="contact-section" id="contact">
+  <div class="contact-container">
+    <h2 class="contact-title">Contact <span>Me</span></h2>
+    <p>If you'd like to get in touch, feel free to send me a message below:</p>
+    
+    <form class="contact-form" action="#" method="post">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<script>
+
+// Animate "Home" section on load
+window.addEventListener("DOMContentLoaded", () => {
+  const home = document.querySelector(".content");
+  home.style.opacity = 0;
+  home.style.transform = "translateY(40px)";
+  home.style.transition = "all 1s ease-out";
+
+  setTimeout(() => {
+    home.style.opacity = 1;
+    home.style.transform = "translateY(0)";
+  }, 200);
+});
+
+// Slide-in "Work Experience" section when it appears in viewport
+const work = document.querySelector("#workexperience");
+
+const slideInWork = () => {
+  const rect = work.getBoundingClientRect();
+  if (rect.top < window.innerHeight - 100) {
+    work.style.opacity = 1;
+    work.style.transform = "translateX(0)";
+  }
+};
+
+work.style.opacity = 0;
+work.style.transform = "translateX(-100px)";
+work.style.transition = "all 1s ease-out";
+window.addEventListener("scroll", slideInWork);
+
+// Fade-in "Educational Background" section on scroll
+const edu = document.querySelector(".edu");
+
+const fadeInEdu = () => {
+  const rect = edu.getBoundingClientRect();
+  if (rect.top < window.innerHeight - 100) {
+    edu.style.opacity = 1;
+    edu.style.transform = "translateY(0)";
+  }
+};
+
+edu.style.opacity = 0;
+edu.style.transform = "translateY(100px)";
+edu.style.transition = "all 1s ease-out";
+window.addEventListener("scroll", fadeInEdu);
+
+
+
+
+// Fade-in animation on load
+document.addEventListener("DOMContentLoaded", () => {
+  const contactForm = document.querySelector(".contact-section");
+  contactForm.style.opacity = 0;
+  contactForm.style.transition = "opacity 1.5s ease";
+
+  setTimeout(() => {
+    contactForm.style.opacity = 1;
+  }, 300);
+});
+
+// Form interaction feedback
+const form = document.querySelector(".contact-form");
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault(); // Prevent actual submission for now
+  alert("Thank you for contacting me! I will respond shortly.");
+  form.reset();
+});
+
+// Input focus effects
+const inputs = form.querySelectorAll("input, textarea");
+
+inputs.forEach((input) => {
+  input.addEventListener("focus", () => {
+    input.style.outline = "2px solid #333";
+    input.style.boxShadow = "0 0 5px rgba(0,0,0,0.3)";
+  });
+
+  input.addEventListener("blur", () => {
+    input.style.outline = "none";
+    input.style.boxShadow = "none";
+  });
+});
+</script>
+
+</body>
+</html>
